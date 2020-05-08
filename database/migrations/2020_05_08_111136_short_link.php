@@ -19,9 +19,8 @@ class ShortLink extends Migration
             $table->string('url');
             $table->string('title');
             $table->string('description');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('code')->index();
-            $table->timestamp('created_at')->nullable();
         });
     }
 

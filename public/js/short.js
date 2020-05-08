@@ -26,7 +26,7 @@
                 let fd = new FormData();
                 let files = this.image[0].files[0];
                 fd.append('_token', $('meta[name="csrf-token"]').attr('content'));
-                fd.append('file',files);
+                fd.append('image',files);
                 fd.append('url', this.url.val());
                 fd.append('title', this.title.val());
                 fd.append('description', this.description.val());
