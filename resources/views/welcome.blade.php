@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -116,7 +116,7 @@
             }
 
             .choose{
-                width: 150px;
+                width: 300px;
                 height: 30px;
                 margin: 10px 0 10px 0;
                 background-color: #ffebec;
@@ -129,6 +129,14 @@
                 background-color: #7ac601;
             }
         </style>
+        <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+        <script src="{{asset('js/ajax.js')}}"></script>
+        <script src="{{asset('js/short.js')}}"></script>
+        <script>
+            window.onload = function() {
+                new Short('.block');
+            };
+        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -145,32 +153,35 @@
                     @endauth
                 </div>
             @endif
-                <div class="wrapper">
-                    <div class="wrapper-item">
-                        <div class="block">
-                            <div class="input-item">
-                                <span>Введите адрес исходной ссылки</span><br>
-                                <input type="text"/>
-                            </div>
-                            <div class="input-item">
-                                <span>Введите заголовок opengraph</span><br>
-                                <input type="text"/>
-                            </div>
-                            <div class="input-item">
-                                <span>Введите описание opengraph</span><br>
-                                <input type="text"/>
-                            </div>
-                            <div class="button-img">
-                                <span>Прикрепите изображение</span><br>
-                                <button class="choose">Выбрать</button>
-                            </div>
-                            <div class="button-shorten">
-                                <button class="shorten">Сократить ссылку</button>
+                @if (Route::has('login'))
+                    @auth
+                        <div class="wrapper">
+                            <div class="wrapper-item">
+                                <div class="block">
+                                    <div class="input-item">
+                                        <span>Введите адрес исходной ссылки</span><br>
+                                        <input class="url__js" type="text" value="ya.ru"/>
+                                    </div>
+                                    <div class="input-item">
+                                        <span>Введите заголовок opengraph</span><br>
+                                        <input class="title__js" type="text" value="1"/>
+                                    </div>
+                                    <div class="input-item">
+                                        <span>Введите описание opengraph</span><br>
+                                        <input class="description__js" type="text" value="2"/>
+                                    </div>
+                                    <div class="button-img">
+                                        <span>Прикрепите изображение</span><br>
+                                        <input type="file" class="choose image__js" name="filename">
+                                    </div>
+                                    <div class="button-shorten">
+                                        <button class="shorten save__js">Сократить ссылку</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
+                    @endauth
+                @endif
         </div>
     </body>
 </html>
