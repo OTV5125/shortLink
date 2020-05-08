@@ -61,6 +61,73 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .wrapper {
+                min-height: 100vh;
+                min-width: 100vw;
+                display: flex;
+                flex-direction: column;
+                -ms-align-items: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .wrapper-item {
+                min-width: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: row;
+                -ms-align-items: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .block {
+                width: 700px;
+                background-color: #e6e6e6;
+                border: 1px solid #b7b7b7;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .input-item {
+                margin-bottom: 5px;
+
+            }
+
+            input {
+                width: 680px;
+                font-size: 14px;
+                padding: 6px 0 4px 10px;
+                border: 1px solid #cecece;
+                background: #F6F6f6;
+                font-family: 'Harmonia Sans', sans-serif;
+            }
+
+            .choose{
+                width: 150px;
+                height: 30px;
+                margin: 10px 0 10px 0;
+                background-color: #ffebec;
+            }
+
+            .shorten {
+                width: 200px;
+                height: 40px;
+                margin: 10px 0 10px 0;
+                background-color: #7ac601;
+            }
         </style>
     </head>
     <body>
@@ -78,23 +145,32 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="wrapper">
+                    <div class="wrapper-item">
+                        <div class="block">
+                            <div class="input-item">
+                                <span>Введите адрес исходной ссылки</span><br>
+                                <input type="text"/>
+                            </div>
+                            <div class="input-item">
+                                <span>Введите заголовок opengraph</span><br>
+                                <input type="text"/>
+                            </div>
+                            <div class="input-item">
+                                <span>Введите описание opengraph</span><br>
+                                <input type="text"/>
+                            </div>
+                            <div class="button-img">
+                                <span>Прикрепите изображение</span><br>
+                                <button class="choose">Выбрать</button>
+                            </div>
+                            <div class="button-shorten">
+                                <button class="shorten">Сократить ссылку</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
         </div>
     </body>
 </html>
