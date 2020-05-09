@@ -52,10 +52,17 @@
             let block =  $('.before-link').first();
             let count = $('.block-before-links').children().length;
             let urlCode = window.location.href + code;
+            let RegExp = /^((ftp|http|https):\/\/)/;
+            let link = '';
+            if(RegExp.test(this.url.val())){
+                link = this.url.val();
+            }else{
+                link = '//'+this.url.val();
+            }
             count = count - 1;
             block = block.clone().appendTo('.block-before-links');
             block.find('.links-title__js').text(this.title.val()+' №'+count);
-            block.find('.links-url__js').html('<a href="//'+this.url.val()+'">'+this.url.val()+'</a>');
+            block.find('.links-url__js').html('<a href="'+link+'">'+this.url.val()+'</a>');
             block.find('.links-code__js').html('<a href="'+urlCode+'">'+urlCode+'</a>');
         },
 

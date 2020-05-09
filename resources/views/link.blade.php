@@ -6,7 +6,14 @@
         <meta property="og:description" content="<?=$meta->description?>" />
         <meta property="og:url" content="<?=$meta->url?>" />
         <meta property="og:image" content="<?=asset('storage/'.$meta->image)?>" />
-        <script>window.location.href = "//<?=$meta->url?>";</script>
+        <script>
+                let link = '<?=$meta->url?>';
+                let RegExp = /^((ftp|http|https):\/\/)/;
+                if(!RegExp.test(link)){
+                    link = '//'+link;
+                }
+            window.location.href = link;
+        </script>
     @else
     Данная ссылка неизвестна
     @endif
