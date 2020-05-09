@@ -172,15 +172,15 @@
                                 <div class="block">
                                     <div class="input-item">
                                         <span>Введите адрес исходной ссылки</span><br>
-                                        <input class="url__js" type="text" value="ya.ru"/>
+                                        <input class="url__js" type="text" value=""/>
                                     </div>
                                     <div class="input-item">
                                         <span>Введите заголовок opengraph</span><br>
-                                        <input class="title__js" type="text" value="1"/>
+                                        <input class="title__js" type="text" value=""/>
                                     </div>
                                     <div class="input-item">
                                         <span>Введите описание opengraph</span><br>
-                                        <input class="description__js" type="text" value="2"/>
+                                        <input class="description__js" type="text" value=""/>
                                     </div>
                                     <div class="button-img">
                                         <span>Прикрепите изображение</span><br>
