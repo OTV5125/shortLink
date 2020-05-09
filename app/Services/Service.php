@@ -9,7 +9,7 @@
 namespace App\Services;
 
 
-class Code
+class Service
 {
     static public function generateCode($code, $i){
         if (empty($code)) return 'A';

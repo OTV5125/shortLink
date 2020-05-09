@@ -103,7 +103,6 @@
 
             .input-item {
                 margin-bottom: 5px;
-
             }
 
             input {
@@ -127,6 +126,19 @@
                 height: 40px;
                 margin: 10px 0 10px 0;
                 background-color: #7ac601;
+            }
+
+            .before-link {
+                min-width: 700px;
+                background-color: #e6e6e6;
+                border: 1px solid #b7b7b7;
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 8px;
+            }
+
+            .before-link span:not(first-child) {
+                margin-left: 10px;
             }
         </style>
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
@@ -178,6 +190,22 @@
                                         <button class="shorten save__js">Сократить ссылку</button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="block-before-links">
+                                <h3>Ваши предыдущие ссылки</h3>
+                                <div class="before-link">
+                                    <span class="links-title__js">титл</span>
+                                    <span class="links-url__js">оригинальная ссылка</span>
+                                    <span class="links-code__js">сгенерированная ссылка</span>
+                                </div>
+                                @foreach($result['links'] AS $i => $link)
+                                        <div class="before-link">
+                                            <span class="links-title__js"><?=$link->title?> №<?=$i+1?></span>
+                                            <span class="links-url__js"><a href="//<?=$link->url?>"><?=$link->url?></a></span>
+                                            <span class="links-code__js"><a href="<?=$result['fullUrl'].$link->code?>"><?=$result['fullUrl'].$link->code?></a></span>
+                                        </div>
+                                @endforeach
                             </div>
                         </div>
                     @endauth

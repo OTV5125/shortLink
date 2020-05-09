@@ -17,7 +17,7 @@
                 type: 'post',
                 url: url,
                 data: data,
-                dataType: 'html',
+                dataType: 'json',
                 contentType: false,
                 processData: false,
                 success: function (response) {

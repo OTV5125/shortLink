@@ -22,7 +22,6 @@
             let validate = this.validate();
 
             if(validate){
-
                 let fd = new FormData();
                 let files = this.image[0].files[0];
                 fd.append('_token', $('meta[name="csrf-token"]').attr('content'));
@@ -30,11 +29,34 @@
                 fd.append('url', this.url.val());
                 fd.append('title', this.title.val());
                 fd.append('description', this.description.val());
-                
                 this.ajax.post('addUrl', fd, function (result) {
-                    console.log(result);
-                });
+                    if(result.status === 'success'){
+                        this.createLinkBlock(result.code);
+                        this.url.val();
+                        this.title.val();
+                        this.description.val();
+                        this.image.val();
+                    }else{
+                        console.log(result)
+                        let str = '';
+                        $.each(result, function( key, value ) {
+                            str += value+'<br>';
+                        });
+                        this.sendError(this.save, str);
+                    }
+                }.bind(this));
             }
+        },
+
+        createLinkBlock: function(code){
+            let block =  $('.before-link').first();
+            let count = $('.block-before-links').children().length;
+            let urlCode = window.location.href + code;
+            count = count - 1;
+            block = block.clone().appendTo('.block-before-links');
+            block.find('.links-title__js').text(this.title.val()+' №'+count);
+            block.find('.links-url__js').html('<a href="//'+this.url.val()+'">'+this.url.val()+'</a>');
+            block.find('.links-code__js').html('<a href="'+urlCode+'">'+urlCode+'</a>');
         },
 
         validate: function () {
@@ -50,16 +72,18 @@
 
             let img = this.image.val();
             let extension = img.split('.').pop().toUpperCase();
+
             if(img.length < 1) {
                 this.sendError(this.image, 'не найдено изображение');
             }
             else if (extension!="PNG" && extension!="JPG" && extension!="GIF" && extension!="JPEG"){
-                this.sendError(this.image, 'расширение должно быть "png, jpg, gif, jpeg"');
+                this.sendError(this.image, 'расширение должно быть "png, jpg, gif, jpeg, bpm"');
             }
             else {
                 this.sendError(this.image, false);
             }
 
+            this.sendError(this.save, false);
             return (this.block.find('.error').length>0)?false:true;
         },
 
