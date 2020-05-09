@@ -12,6 +12,9 @@ use Validator;
 class UrlController extends Controller
 {
     public function add(Request $request){
+        if(!$request->ajax()){
+            echo json_encode(['status' => 'error', 'message' => 'not ajax']);
+        }
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'description' => 'required|max:255',

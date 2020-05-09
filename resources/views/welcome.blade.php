@@ -208,6 +208,14 @@
                                 @endforeach
                             </div>
                         </div>
+                    @else
+                    <div class="wrapper">
+                        <div class="wrapper-item">
+                            <div class="block">
+                                В проекте обязательная авторизация
+                            </div>
+                        </div>
+                    </div>
                     @endauth
                 @endif
         </div>
