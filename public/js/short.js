@@ -32,12 +32,11 @@
                 this.ajax.post('addUrl', fd, function (result) {
                     if(result.status === 'success'){
                         this.createLinkBlock(result.code);
-                        this.url.val();
-                        this.title.val();
-                        this.description.val();
-                        this.image.val();
+                        this.url.val('');
+                        this.title.val('');
+                        this.description.val('');
+                        this.image.val('');
                     }else{
-                        console.log(result)
                         let str = '';
                         $.each(result, function( key, value ) {
                             str += value+'<br>';
