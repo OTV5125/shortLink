@@ -49,7 +49,7 @@ class UrlController extends Controller
     public function link($code){
         $meta = ShortLink::select('url', 'title', 'image', 'description')->where('code', $code)->first();
         if(!is_null($meta)){
-            return view('link')->with('meta', $meta);
+            return view('link')->with('meta', $meta->toarray());
         }
         return view('link');
     }
