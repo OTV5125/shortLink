@@ -19,7 +19,7 @@ class ShortLink extends Model
             $id = 1;
         }else{
             $lastCode = $result->code;
-            $id = $result->id;
+            $id = ++$result->id;
         }
         $code = Service::generateCode($lastCode, -1);
         $image = $param['image'];
