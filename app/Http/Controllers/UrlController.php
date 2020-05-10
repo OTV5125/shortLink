@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Service;
 use App\ShortLink;
 use Auth;
 use Validator;
@@ -22,22 +21,15 @@ class UrlController extends Controller
             echo json_encode($validator->messages());
         }
         else{
-            $lastCode = ShortLink::select('code')->orderBy('id', 'desc')->first();
-            $lastCode = (!is_null($lastCode))?$lastCode->code:null;
-            $code = Service::generateCode($lastCode, -1);
             $shortLink = new ShortLink;
-            $shortLink->user_id = Auth::user()->id;
-            $shortLink->url = $request->url;
-            $shortLink->title = $request->title;
-            $shortLink->description = $request->description;
-            $shortLink->code = $code;
-            $shortLink->save();
-            $id = $shortLink->id;
-            $fileName = $id.'.'.$request->image->getClientOriginalExtension();
-            $shortLink = $shortLink::find($shortLink->id);
-            $shortLink->image = $fileName;
-            $shortLink->save();
-            $request->image->storeAs('public', $fileName);
+            $data = [
+                'user_id' => Auth::user()->id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'url' => $request->url,
+                'image' => $request->image,
+            ];
+            $code = $shortLink->addRecord($data);
             echo json_encode(['status' => 'success', 'code' => $code]);
         }
         die;
@@ -46,6 +38,7 @@ class UrlController extends Controller
     public function link($code){
         $meta = ShortLink::select('url', 'title', 'image', 'description')->where('code', $code)->first();
         if(!is_null($meta)){
+            if(isset($meta->image)) $meta->image = asset('storage/images/'.$meta->image);
             return view('link')->with('meta', $meta->toarray());
         }
         return view('link');
