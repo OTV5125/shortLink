@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Service;
+use Otv5125\Code\Code;
 
 class ShortLink extends Model
 {
@@ -21,7 +21,7 @@ class ShortLink extends Model
             $lastCode = $result->code;
             $id = ++$result->id;
         }
-        $code = Service::generateCode($lastCode, -1);
+        $code = Code::generateCode($lastCode, -1);
         $image = $param['image'];
         $param['image'] = $id.'.'.$image->getClientOriginalExtension();
         $param['code'] = $code;
