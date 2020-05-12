@@ -21,7 +21,7 @@ class ShortLink extends Model
             $lastCode = $result->code;
             $id = ++$result->id;
         }
-        $code = Code::generateCode($lastCode, -1);
+        $code = Code::generateCode($lastCode);
         $image = $param['image'];
         $param['image'] = $id.'.'.$image->getClientOriginalExtension();
         $param['code'] = $code;

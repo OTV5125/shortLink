@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f2a7df615e72db4efc9a2e3fd8b5aa2",
+    "content-hash": "dc1779a5fbbbea0ee91a2d65ffad0c07",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1411,16 +1411,16 @@
         },
         {
             "name": "otv5125/code",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OTV5125/Code.git",
-                "reference": "8cb56215021bbf8be013d87d9966edf46281e520"
+                "reference": "21e7842aea2e8d16683add2bf1bd8ab93addb232"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OTV5125/Code/zipball/8cb56215021bbf8be013d87d9966edf46281e520",
-                "reference": "8cb56215021bbf8be013d87d9966edf46281e520",
+                "url": "https://api.github.com/repos/OTV5125/Code/zipball/21e7842aea2e8d16683add2bf1bd8ab93addb232",
+                "reference": "21e7842aea2e8d16683add2bf1bd8ab93addb232",
                 "shasum": ""
             },
             "type": "project",
@@ -1440,7 +1440,7 @@
                 }
             ],
             "description": "library generate code",
-            "time": "2020-05-11T16:30:39+00:00"
+            "time": "2020-05-12T12:05:23+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -5609,9 +5609,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "otv5125/code": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
