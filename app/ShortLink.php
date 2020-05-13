@@ -3,30 +3,26 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Otv5125\Code\Code;
 
 class ShortLink extends Model
 {
     protected $table = 'short_link';
     public $timestamps = false;
-    protected $fillable = array('user_id', 'url', 'title', 'description', 'image', 'code');
+    protected $fillable = ['user_id', 'url', 'title', 'description', 'image', 'code'];
+    public $columnName = ['url', 'title', 'description', 'image'];
 
-    public function addRecord($param){
-        $result = ShortLink::select('id', 'code')->orderBy('id', 'desc')->first();
+    public function getLastCode()
+    {
+        return ShortLink::select('id', 'code')->orderBy('id', 'desc')->first();
+    }
 
-        if(is_null($result)){
-            $lastCode = null;
-            $id = 1;
-        }else{
-            $lastCode = $result->code;
-            $id = ++$result->id;
+    public function link($code)
+    {
+        $result = call_user_func(array($this, 'select'), $this->columnName)->where('code', $code)->first();
+        if (is_null($result)) {
+            return false;
+        } else {
+            return $result->toarray();
         }
-        $code = Code::generateCode($lastCode);
-        $image = $param['image'];
-        $param['image'] = $id.'.'.$image->getClientOriginalExtension();
-        $param['code'] = $code;
-        self::create($param);
-        $image->storeAs('public/images', $param['image']);
-        return $code;
     }
 }
