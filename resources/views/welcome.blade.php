@@ -203,7 +203,7 @@
                                         <div class="before-link">
                                             <span class="links-title__js"><?=$link->title?> №<?=$i+1?></span>
                                             <span class="links-url__js"><a href="//<?=$link->url?>"><?=$link->url?></a></span>
-                                            <span class="links-code__js"><a href="<?=$result['fullUrl'].$link->code?>"><?=$result['fullUrl'].$link->code?></a></span>
+                                            <span class="links-code__js"><a href="<?=url('/').'/'.$link->code?>"><?=url('/').'/'.$link->code?></a></span>
                                         </div>
                                 @endforeach
                             </div>
